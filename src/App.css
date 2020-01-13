@@ -36,3 +36,39 @@
     transform: rotate(360deg);
   }
 }
+
+:root{
+  background-color: #7fcd91;
+}
+
+.inputFields{
+  
+  height: 30px;
+  width: 300px;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.issueButton{
+  border: 1px solid #004445;
+  border-radius: 20px;
+  width: 200px;
+  background-color: #004445;
+  color: aliceblue;
+  font-size: 20px;
+}
+
+.individualIssueCard{
+    border: 1px solid #5b5656;
+    border-radius: 20px;
+    background-color: #5b5656;
+    width:500px;
+    margin: 15px auto;
+    color: #f0e3ff;
+}
+
+.cardMains{
+  font-size: 20px;
+  font-weight: 700;
+  color: #f8b400;
+}
