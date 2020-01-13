@@ -8,8 +8,8 @@ class Form extends Component {
         super(props)
     
         this.state = {
-             ownerName : "PratikVirus07",
-             repoName : "Fitcode",
+             ownerName : "",
+             repoName : "",
              issuesArray : []
         }
         this.clickHandler = this.clickHandler.bind(this)
