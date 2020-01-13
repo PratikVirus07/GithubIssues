@@ -14,8 +14,8 @@ class Issues extends Component {
     
     clickHandler(){
 
-        // axios.get("https://api.github.com/repos/PratikVirus07/fitcode/issues")
-        axios.get("https://api.github.com/repos/"+ this.props.ownerNameProps +"/"+ this.props.repoNameProps +"/issues")
+        //  axios.get("https://api.github.com/repos/pratikvirus07/fitcode/issues?filter=subscribed")
+        axios.get("https://api.github.com/repos/"+ this.props.ownerName +"/"+ this.props.repoName +"/issues")
         .then(response => {
             console.log(response)
             this.setState({
@@ -30,14 +30,19 @@ class Issues extends Component {
     render() {
         const {issuesArray} = this.state
         return (
-            <div>
-                <button onClick={this.clickHandler}>Show the issues</button>
-                {
-                    issuesArray.length ? 
-                    issuesArray.map(individualIssue => <div key={individualIssue.id}>{individualIssue.title}</div>) :
-                    null
-                }
-            </div>
+                <div>
+                    <button onClick={this.clickHandler} className="issueButton">Show the issues</button>
+                    {
+                        issuesArray.length ? 
+                        issuesArray.map(individualIssue => 
+                            <div key={individualIssue.id} className="individualIssueCard">
+                                <div><span className="cardMains">Issue Title : </span>{individualIssue.title}</div>
+                                <div><span className="cardMains"> Created By : </span>{individualIssue.user.login}</div>
+                                <div><span className="cardMains">Issue Description : </span>{individualIssue.body}</div>
+                            </div>) 
+                        :null
+                    }
+                </div>
         )
     }
 }

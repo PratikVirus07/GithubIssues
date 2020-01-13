@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-// import Issues from './Issues'
-import axios from 'axios'
+ import Issues from './Issues'
+//import axios from 'axios'
 
 class Form extends Component {
 
@@ -10,9 +10,7 @@ class Form extends Component {
         this.state = {
              ownerName : "",
              repoName : "",
-             issuesArray : []
         }
-        this.clickHandler = this.clickHandler.bind(this)
     }
 
     giveOwnerName = (event) => {
@@ -27,24 +25,9 @@ class Form extends Component {
         })
     }
     
-    clickHandler(){
-
-         //axios.get("https://api.github.com/repos/PratikVirus07/fitcode/issues")
-            axios.get("https://api.github.com/repos/"+ this.state.ownerName +"/"+ this.state.repoName +"/issues")
-        .then(response => {
-            console.log(response)
-            this.setState({
-                issuesArray:response.data
-            })
-            console.log(response.data)
-        })
-        .catch(error => {
-            console.log(error)
-        })
-    }
 
     render() {
-        const {issuesArray} = this.state
+
         return (
             <div>
                 <form>
@@ -59,19 +42,9 @@ class Form extends Component {
                         </div>
                     </div>
                 </form>
-                <div>
-                    <button onClick={this.clickHandler} className="issueButton">Show the issues</button>
-                    {
-                        issuesArray.length ? 
-                        issuesArray.map(individualIssue => 
-                            <div key={individualIssue.id} className="individualIssueCard">
-                                <div><span className="cardMains">Issue Title : </span>{individualIssue.title}</div>
-                                <div><span className="cardMains"> Created By : </span>{individualIssue.user.login}</div>
-                                <div><span className="cardMains">Issue Description : </span>{individualIssue.body}</div>
-                            </div>) 
-                        :null
-                    }
-                </div>
+
+                <Issues {...this.state}/>
+
             </div>
             
         )
